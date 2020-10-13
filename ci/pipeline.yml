@@ -1,7 +1,6 @@
 groups:
 - name: delivery
   jobs:
-  - unit-tests
   - compile-smoke
   - deploy-non-prod
   - load-test
@@ -35,22 +34,14 @@ resources:
     space: {{pws-production-space}}
 
 jobs:
-- name: unit-tests
-  serial: true
-  public: true
-  plan:
-  - get: concourse-demo-app-master
-    trigger: true
-  - task: unit-tests
-    file: concourse-demo-app-master/ci/unit.yml
+
 - name: compile-smoke
   serial: true
   public: true
   plan:
   - get: concourse-demo-app-master
     trigger: true
-    passed:
-      - unit-tests
+
   - task: compile-smoke
     file: concourse-demo-app-master/ci/compile.yml
 - name: deploy-non-prod
