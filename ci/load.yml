@@ -1,7 +1,7 @@
 ---
 platform: linux
 
-image: docker:///golang
+
 
 inputs:
 - name: concourse-demo-app-master
