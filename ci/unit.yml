@@ -1,7 +1,6 @@
 ---
 platform: linux
 
-image: docker:///golang#1.4.2-wheezy
 
 inputs:
 - name: concourse-demo-app-master

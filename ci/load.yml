@@ -1,7 +1,7 @@
 ---
 platform: linux
 
-image: docker:///golang#1.4.2-wheezy
+image: docker:///golang
 
 inputs:
 - name: concourse-demo-app-master
@@ -9,4 +9,3 @@ inputs:
 
 run:
   path: go/src/github.com/xchapter7x/concourse-demo-app/ci/run-load
-

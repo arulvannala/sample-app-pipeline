@@ -14,7 +14,7 @@ resources:
   type: git
   source:
     branch: master
-    uri: https://github.com/lsilvapvt/sample-app-pipeline.git
+    uri: https://github.com/arulvannala/sample-app-pipeline.git
 - name: non-prod
   type: cf
   source:
@@ -72,16 +72,8 @@ jobs:
     trigger: true
     passed:
       - deploy-non-prod
-  - task: load-test
+  - task: load-test-task
     file: concourse-demo-app-master/ci/load.yml
-    config:
-      params:
-        "CFUSER": {{deploy-username}}
-        "CFPASS": {{deploy-password}}
-        "ORG": {{pws-organization}}
-        "SPACE": {{pws-staging-space}}
-        "API": {{pws-api}}
-        "APPNAME": demo-app-stage
 - name: deploy-prod
   plan:
   - get: concourse-demo-app-master
